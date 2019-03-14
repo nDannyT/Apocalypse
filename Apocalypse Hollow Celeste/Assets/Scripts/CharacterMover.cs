@@ -20,6 +20,7 @@ public class CharacterMover : MonoBehaviour
 
     private void Update()
     {
+        // Check for wall sliding
         if (!grounded)
         {
             wallCheck = Physics2D.OverlapCircle(wallCheckPoint.position, 0.1f, wallLayerMask);
@@ -39,6 +40,7 @@ public class CharacterMover : MonoBehaviour
         }
     }
 
+    // Wall sliding method
     private void HandleWallSliding()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, -4f);
