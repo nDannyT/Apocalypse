@@ -2628,7 +2628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   facingRight: 1
-  jumpForce: 250
+  jumpForce: 12
   groundCheck: {fileID: 2058091588}
   groundRadius: 0.2
   grounded: 0

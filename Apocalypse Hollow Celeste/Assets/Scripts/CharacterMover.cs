@@ -34,6 +34,22 @@ public class CharacterMover : MonoBehaviour
                 }
             }
         }
+       // else
+        //{
+        // Character jump and checks if touching the ground
+        bool jump = Input.GetButtonDown("Jump");
+        if (jump && (grounded || !doubleJump))
+        {
+            if (!doubleJump && !grounded)
+            {
+                Debug.Log("Double Jump!");
+                doubleJump = true;
+                Vector2 v = GetComponent<Rigidbody2D>().velocity;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(v.x, 0);
+            }
+            GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        }
+        //}
         if (wallCheck == false || grounded)
         {
             wallSlide = false;
@@ -83,16 +99,17 @@ public class CharacterMover : MonoBehaviour
             doubleJump = false;
         }
 
-        // Character jump and checks if touching the ground
-        bool jump = Input.GetButtonDown("Jump");
-        if (jump && (grounded || !doubleJump))
-        {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpForce);
-            if (!doubleJump && !grounded)
-            {
-                doubleJump = true;
-            }
-        }
+        //// Character jump and checks if touching the ground
+        //bool jump = Input.GetButtonDown("Jump");
+        //if (jump && (grounded || !doubleJump))
+        //{
+        //    GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        //    if (!doubleJump && !grounded)
+        //    {
+        //        Debug.Log("Double Jump!");
+        //        doubleJump = true;
+        //    }
+        //}
 
         // Flip Character by calling Flip() function, does this when right or left key is pressed
         if (move < 0 && facingRight)
