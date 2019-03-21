@@ -6,7 +6,6 @@ public class Audio : MonoBehaviour
 {
     public AudioClip Music;
     public AudioSource MusicSource;
-
     // Start is called before the first frame update
     void Start()
     {
