@@ -595,6 +595,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1077317914}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1188919523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2097832518069736651, guid: bffa5a7b206eb7a4d85da5815aa538f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1447617455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1447617455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1055,7 +1061,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1079,7 +1085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785872494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.72, y: -3.762, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1663,6 +1669,6 @@ PrefabInstance:
         type: 3}
       propertyPath: destroyThis
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1188919523}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5786c93f89d00fb4c912fb44d398ce47, type: 3}
