@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - MovingPlatform
+  - IgnorePortal
+  - PortalTrigger
+  - Portal
+  - Cannon
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - Player
   - Ground
   - Wall
-  - 
+  - Slide
   - 
   - 
   - 
