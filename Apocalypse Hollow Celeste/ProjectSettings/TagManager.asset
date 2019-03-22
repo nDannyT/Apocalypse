@@ -9,6 +9,7 @@ TagManager:
   - PortalTrigger
   - Portal
   - Cannon
+  - Obtainable
   layers:
   - Default
   - TransparentFX

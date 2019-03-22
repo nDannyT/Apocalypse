@@ -15,6 +15,7 @@ public class CharacterMover : MonoBehaviour
     public LayerMask whatIsGround;
 
     public bool wallSlide;
+    public float slideSpeed = -5f;
     public Transform wallCheckPoint;
     public bool wallCheck;
     public LayerMask wallLayerMask;
@@ -101,7 +102,7 @@ public class CharacterMover : MonoBehaviour
     // Wall sliding method
     private void HandleWallSliding()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, -5f);
+        GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, slideSpeed);
 
         wallSlide = true;
 
@@ -122,7 +123,7 @@ public class CharacterMover : MonoBehaviour
     // Sliding from an unclimbable wall
     private void HandleSliding()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, -8f);
+        GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, Physics2D.gravity.y);
 
         wallSlide = true;
 

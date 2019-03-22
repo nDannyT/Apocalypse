@@ -5,13 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform respawn;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.transform.position = respawn.transform.position;
-        //Debug.Log("Teleport!");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Teleport!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
