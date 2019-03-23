@@ -4,22 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMover : MonoBehaviour
 {
-    public float moveSpeed = 10.0f;
-    public bool facingRight = true;
+    [SerializeField] private float moveSpeed = 10.0f;
+    [SerializeField] private bool facingRight = true;
 
-    public float jumpForce = 10.0f;
-    public Transform groundCheck;
-    public float groundRadius = 0.2f;
-    public bool grounded = false;
-    public bool doubleJump = false;
-    public LayerMask whatIsGround;
+    [SerializeField] private float jumpForce = 10.0f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundRadius = 0.1f;
+    [SerializeField] private bool grounded = false;
+    [SerializeField] private bool doubleJump = false;
+    [SerializeField] private LayerMask whatIsGround;
 
-    public bool wallSlide;
-    public float slideSpeed = -5f;
-    public Transform wallCheckPoint;
-    public bool wallCheck;
-    public LayerMask wallLayerMask;
-    public LayerMask slideLayerMask;
+    [SerializeField] private bool wallSlide;
+    [SerializeField] private float slideSpeed = -5f;
+    [SerializeField] private Transform wallCheckPoint;
+    [SerializeField] private bool wallCheck;
+    [SerializeField] private LayerMask wallLayerMask;
+    [SerializeField] private LayerMask slideLayerMask;
+    [SerializeField] private float resetSlideTime = 0.5f;
+    [SerializeField] private float timeOnWall = 0.5f;
 
     // Portals
     public bool canTeleport = true;
@@ -27,23 +29,19 @@ public class CharacterMover : MonoBehaviour
     {
         if (collision.gameObject.tag == "IgnorePortal")
         {
-            Debug.Log("Nothing happens");
             canTeleport = false;
         }
         else if (collision.gameObject.tag == "PortalTrigger")
         {
-            Debug.Log("canTeleport = true");
             canTeleport = true;
         }
         else if (collision.gameObject.tag == "Cannon")
         {
-            Debug.Log("WEEEEEE");
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * jumpForce * 4, ForceMode2D.Impulse);
         }
 
         if (collision.gameObject.tag == "Portal" && canTeleport == true)
         {
-            Debug.Log("Teleport!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
@@ -58,9 +56,17 @@ public class CharacterMover : MonoBehaviour
             {
                 if (wallCheck)
                 {
+                    timeOnWall -= Time.deltaTime;
                     grounded = true;
                     doubleJump = false;
-                    HandleWallSliding();
+                    if (timeOnWall <= 0.0f)
+                    {
+                        HandleWallSliding();
+                    }
+                }
+                else
+                {
+                    timeOnWall = resetSlideTime;
                 }
             }
         }
@@ -82,11 +88,10 @@ public class CharacterMover : MonoBehaviour
 
         // Character jump and checks if touching the ground
         bool jump = Input.GetButtonDown("Jump");
-        if (jump && (grounded || !doubleJump))
+        if (jump && (grounded || !doubleJump || wallCheck))
         {
             if (!doubleJump && !grounded)
             {
-                Debug.Log("Double Jump!");
                 doubleJump = true;
                 Vector2 v = GetComponent<Rigidbody2D>().velocity;
                 GetComponent<Rigidbody2D>().velocity = new Vector2(v.x, 0);

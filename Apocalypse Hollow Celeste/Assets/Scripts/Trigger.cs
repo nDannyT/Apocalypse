@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
-    public GameObject destroyThis;
+    [SerializeField] private GameObject destroyThis;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Break!");
         Object.Destroy(destroyThis);
     }
 }

@@ -7,7 +7,6 @@ public class Death : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Teleport!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

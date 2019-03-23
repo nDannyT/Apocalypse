@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public GameObject platform;
-    public float moveSpeed;
+    [SerializeField] private GameObject platform;
+    [SerializeField] private float moveSpeed;
 
     private Transform currentPoint;
-    public Transform[] points;
+    [SerializeField] private Transform[] points;
 
-    public int pointSelection;
+    [SerializeField] private int pointSelection;
     
     void Start()
     {
@@ -27,7 +27,6 @@ public class MovingPlatform : MonoBehaviour
             {
                 pointSelection = 0;
             }
-
             currentPoint = points[pointSelection];
         }
     }

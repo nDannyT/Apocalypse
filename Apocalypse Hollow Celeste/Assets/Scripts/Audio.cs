@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour
 {
-    public AudioClip Music;
-    public AudioSource MusicSource;
+    [SerializeField] private AudioClip Music;
+    [SerializeField] private AudioSource MusicSource;
     // Start is called before the first frame update
     void Start()
     {
